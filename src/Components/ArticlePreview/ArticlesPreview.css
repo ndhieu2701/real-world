@@ -1,0 +1,16 @@
+.btn-sm.action-btn.active,
+.btn-sm.action-btn:hover,
+.btn-sm:hover,
+.btn-sm.active {
+    background-color: #5CB85C;
+    color: #fff
+}
+
+.btn-sm.delete {
+    color: #B85C5C;
+    border-color: #B85C5C;
+}
+.btn-sm.delete:hover {
+    background-color: #B85C5C;
+    color: #fff;
+}
