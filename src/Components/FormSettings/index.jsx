@@ -40,7 +40,6 @@ const FormSetting = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (email === "" || password === "" || username === "") {
-      console.log("error");
       return;
     }
 

@@ -10,12 +10,14 @@ const ArticlePreview = (props) => {
   const [favorCount, setFavorCount] = useState(props.favoritesCount);
 
   const handleClick = async () => {
-    const response = !favorited
-      ? await context.likeArticle(props.slug)
-      : await context.dislikeArticle(props.slug);
-
-    setFavorCount(response.data.article.favoritesCount);
-    setFavorited(!favorited);
+    if(user){
+      const response = !favorited
+        ? await context.likeArticle(props.slug)
+        : await context.dislikeArticle(props.slug);
+  
+      setFavorCount(response.data.article.favoritesCount);
+      setFavorited(!favorited);
+    }
   };
 
   return (

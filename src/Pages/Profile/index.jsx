@@ -53,7 +53,7 @@ const Profile = () => {
       .get(`https://api.realworld.io/api/articles?${slug}`, {
         headers: {
           accept: "application/json, text/plain, */*",
-          authorization: "Token " + token,
+          authorization: "Token " + (token ||""),
         },
       })
       .catch((err) => console.log(err));
@@ -106,13 +106,17 @@ const Profile = () => {
                   <img src={user.image} className="user-img" alt="" />
                   <h4>{user.username}</h4>
                   <p>{user.bio}</p>
-                  {userLogin.username !== user.username && (
-                    <button className={`btn btn-outline-secondary action-btn btn-sm ${follow ? "active" : ""} `}onClick={handleFollow}>
+                  {token && userLogin.username !== user.username && (
+                    <button className={`btn btn-outline-secondary action-btn btn-sm ${follow ? "active" : ""} `} onClick={handleFollow}>
                       <i className="ion-plus-round"></i>
-                      &nbsp; {!token ? "Follow" : `${follow ? "Unfollow" : "Follow"}`} {user.username}
+                      &nbsp; {follow ? "Unfollow" : "Follow"} {user.username}
                     </button>
                   )}
-                  {userLogin.username === user.username && (
+                  {!token && <Link to="/login" className="btn btn-outline-secondary action-btn btn-sm">
+                      <i className="ion-plus-round"></i>&nbsp; Follow {user.username}
+                    </Link>
+                  }
+                  {token && userLogin.username === user.username && (
                     <Link
                       to="/settings"
                       className="btn btn-outline-secondary action-btn btn-sm"

@@ -12,7 +12,8 @@ const Tag = (props) => {
       props.setFeedActive(`?&tag=${props.value}`)
       props.setTagActive(props.value)
       document.querySelector('.feed-label.active').classList.remove('active')
-      document.querySelectorAll('.feed-label')[2].classList.add('active')
+      const node = document.querySelectorAll('.feed-label')
+      node[node.length - 1].classList.add('active')
     }
   };
   return (
