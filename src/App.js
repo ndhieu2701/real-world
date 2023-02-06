@@ -4,7 +4,7 @@ import DefaultLayout from "./Components/Layout/DefaultLayout";
 
 function App() {
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <div className="App">
         <Routes>
           {publicRoutes.map((route, index) => {
